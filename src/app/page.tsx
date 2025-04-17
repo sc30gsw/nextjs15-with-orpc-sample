@@ -1,12 +1,9 @@
-import { headers } from 'next/headers'
 import Link from 'next/link'
 import { Suspense } from 'react'
 import { TodoForm } from '~/features/todo/components/todo-form'
 import { getTodos } from '~/features/todo/server/fetcher'
 
-export default async function Home() {
-  const headersList = await headers()
-  console.log('headersList', headersList)
+export default function Home() {
   return (
     <div className="flex flex-col gap-4">
       <h1 className="text-2xl font-bold">Todo List</h1>
