@@ -12,7 +12,6 @@ import { upfetch } from '~/lib/up-fetch'
 // ? https://dummyjson.com/docs/todos#todos-add
 export const addTodoAction = os
   .input(TodoSchema.omit({ id: true }))
-  .output(TodoSchema)
   .errors({
     ADD_TODO_ERROR: {
       message: 'Error adding todo',
