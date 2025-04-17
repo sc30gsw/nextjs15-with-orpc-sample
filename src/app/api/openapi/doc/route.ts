@@ -1,6 +1,7 @@
 import fs from 'node:fs'
 import { OpenAPIGenerator } from '@orpc/openapi'
 import { ZodToJsonSchemaConverter } from '@orpc/zod'
+import { NextResponse } from 'next/server'
 import { router } from '~/lib/orpc-router'
 
 export async function GET() {
@@ -17,7 +18,7 @@ export async function GET() {
 
   fs.writeFileSync('openapi.json', JSON.stringify(spec, null, 2), 'utf8')
 
-  return new Response(JSON.stringify(spec, null, 2), {
+  return NextResponse.json(spec, {
     status: 200,
     headers: {
       'Content-Type': 'application/json',
