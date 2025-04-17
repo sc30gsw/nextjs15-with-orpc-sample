@@ -1,0 +1,143 @@
+{
+  "info": {
+    "title": "My Dummy Todo API",
+    "version": "1.0.0"
+  },
+  "openapi": "3.1.1",
+  "paths": {
+    "/todos/list": {
+      "get": {
+        "operationId": "todos.list",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "todos": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "todo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "completed": {
+                            "type": "boolean"
+                          },
+                          "userId": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "todo",
+                          "completed",
+                          "userId"
+                        ]
+                      }
+                    },
+                    "total": {
+                      "type": "number"
+                    },
+                    "skip": {
+                      "type": "number"
+                    },
+                    "limit": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "todos",
+                    "total",
+                    "skip",
+                    "limit"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/todos/find": {
+      "get": {
+        "operationId": "todos.find",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "todo": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "completed": {
+                      "type": "boolean"
+                    },
+                    "userId": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "todo",
+                    "completed",
+                    "userId"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

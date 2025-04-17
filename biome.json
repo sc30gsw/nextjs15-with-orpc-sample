@@ -63,7 +63,8 @@
         "env.ts",
         "tailwind.config.ts",
         "./src/features/**/types/schemas/*.ts",
-        "*.d.ts"
+        "*.d.ts",
+        "./src/features/**/actions/*.ts"
       ],
       "linter": {
         "rules": {
