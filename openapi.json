@@ -60,12 +60,7 @@
                             "type": "number"
                           }
                         },
-                        "required": [
-                          "id",
-                          "todo",
-                          "completed",
-                          "userId"
-                        ]
+                        "required": ["id", "todo", "completed", "userId"]
                       }
                     },
                     "total": {
@@ -78,12 +73,7 @@
                       "type": "number"
                     }
                   },
-                  "required": [
-                    "todos",
-                    "total",
-                    "skip",
-                    "limit"
-                  ]
+                  "required": ["todos", "total", "skip", "limit"]
                 }
               }
             }
@@ -128,12 +118,7 @@
                       "type": "number"
                     }
                   },
-                  "required": [
-                    "id",
-                    "todo",
-                    "completed",
-                    "userId"
-                  ]
+                  "required": ["id", "todo", "completed", "userId"]
                 }
               }
             }
