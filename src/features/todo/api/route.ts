@@ -1,26 +1,28 @@
 import { os } from '@orpc/server'
-import { z } from 'zod'
+// biome-ignore lint/style/noNamespaceImport: <explanation>
+import * as v from 'valibot'
 import {
   type Todo,
   TodoSchema,
 } from '~/features/todo/types/schemas/todo-schema'
+
 import { upfetch } from '~/lib/up-fetch'
 
 // ? https://dummyjson.com/docs/todos#todos-all
 export const listTodo = os
   .route({ method: 'GET' })
   .input(
-    z.object({
-      limit: z.number().min(1).max(100).optional(),
-      skip: z.number().min(0).optional(),
+    v.object({
+      limit: v.pipe(v.number(), v.minValue(1), v.maxValue(100)),
+      skip: v.pipe(v.number(), v.minValue(0)),
     }),
   )
   .output(
-    z.object({
-      todos: z.array(TodoSchema),
-      total: z.number(),
-      skip: z.number(),
-      limit: z.number(),
+    v.object({
+      todos: v.array(TodoSchema),
+      total: v.number(),
+      skip: v.number(),
+      limit: v.number(),
     }),
   )
   .handler(async ({ input }) => {
@@ -41,7 +43,7 @@ export const listTodo = os
 // ? https://dummyjson.com/docs/todos#todos-single
 export const findTodo = os
   .route({ method: 'GET' })
-  .input(TodoSchema.pick({ id: true }))
+  .input(v.pick(TodoSchema, ['id']))
   .output(TodoSchema)
   .handler(async ({ input }) => {
     const response = await upfetch<Todo>(`/todos/${input.id}`)

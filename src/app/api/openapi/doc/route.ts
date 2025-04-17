@@ -1,12 +1,13 @@
 import fs from 'node:fs'
 import { OpenAPIGenerator } from '@orpc/openapi'
-import { ZodToJsonSchemaConverter } from '@orpc/zod'
+import { experimental_ValibotToJsonSchemaConverter as ValibotToJsonSchemaConverter } from '@orpc/valibot'
 import { NextResponse } from 'next/server'
 import { router } from '~/lib/orpc-router'
 
+// ? https://github.com/unnoq/orpc/tree/main/packages/valibot
 export async function GET() {
   const generator = new OpenAPIGenerator({
-    schemaConverters: [new ZodToJsonSchemaConverter()],
+    schemaConverters: [new ValibotToJsonSchemaConverter()],
   })
 
   const spec = await generator.generate(router, {

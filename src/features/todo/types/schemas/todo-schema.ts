@@ -1,14 +1,10 @@
-import z from 'zod'
+import * as v from 'valibot'
 
-export const TodoSchema = z.object({
-  id: z.number({
-    message: 'ID is required',
-  }),
-  todo: z.string().min(1, { message: 'Title is required' }),
-  completed: z.boolean(),
-  userId: z.number({
-    message: 'User ID is required',
-  }),
+export const TodoSchema = v.object({
+  id: v.number(),
+  todo: v.string(),
+  completed: v.boolean(),
+  userId: v.number(),
 })
 
-export type Todo = z.infer<typeof TodoSchema>
+export type Todo = v.InferOutput<typeof TodoSchema>

@@ -12,6 +12,7 @@
           {
             "name": "limit",
             "in": "query",
+            "required": true,
             "style": "deepObject",
             "explode": true,
             "schema": {
@@ -23,6 +24,7 @@
           {
             "name": "skip",
             "in": "query",
+            "required": true,
             "style": "deepObject",
             "explode": true,
             "schema": {
@@ -37,6 +39,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "$schema": "http://json-schema.org/draft-07/schema#",
                   "type": "object",
                   "properties": {
                     "todos": {
@@ -48,8 +51,7 @@
                             "type": "number"
                           },
                           "todo": {
-                            "type": "string",
-                            "minLength": 1
+                            "type": "string"
                           },
                           "completed": {
                             "type": "boolean"
@@ -110,14 +112,14 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "$schema": "http://json-schema.org/draft-07/schema#",
                   "type": "object",
                   "properties": {
                     "id": {
                       "type": "number"
                     },
                     "todo": {
-                      "type": "string",
-                      "minLength": 1
+                      "type": "string"
                     },
                     "completed": {
                       "type": "boolean"

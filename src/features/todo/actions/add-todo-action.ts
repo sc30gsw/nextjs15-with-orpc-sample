@@ -2,20 +2,19 @@
 
 import { os } from '@orpc/server'
 import { revalidateTag } from 'next/cache'
-import z from 'zod'
-import {
-  type Todo,
-  TodoSchema,
-} from '~/features/todo/types/schemas/todo-schema'
+// biome-ignore lint/style/noNamespaceImport: <explanation>
+import * as v from 'valibot'
+import { TodoFormSchema } from '~/features/todo/types/schemas/todo-form-schema'
+import type { Todo } from '~/features/todo/types/schemas/todo-schema'
 import { upfetch } from '~/lib/up-fetch'
 
 // ? https://dummyjson.com/docs/todos#todos-add
 export const addTodoAction = os
-  .input(TodoSchema.omit({ id: true }))
+  .input(TodoFormSchema)
   .errors({
     ADD_TODO_ERROR: {
       message: 'Error adding todo',
-      data: z.object({ error: z.string() }),
+      data: v.object({ error: v.string() }),
     },
   })
   .handler(async ({ input }) => {
