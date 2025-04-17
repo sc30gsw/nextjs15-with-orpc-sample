@@ -62,7 +62,6 @@
       "include": [
         "env.ts",
         "tailwind.config.ts",
-        "./src/features/**/types/schemas/*.ts",
         "*.d.ts",
         "./src/features/**/actions/*.ts"
       ],
@@ -70,6 +69,17 @@
         "rules": {
           "style": {
             "useNamingConvention": "off"
+          }
+        }
+      }
+    },
+    {
+      "include": ["./src/features/**/types/schemas/*.ts"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useNamingConvention": "off",
+            "noNamespaceImport": "off"
           }
         }
       }

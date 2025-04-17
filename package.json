@@ -17,12 +17,15 @@
     "@orpc/openapi": "^1.0.3",
     "@orpc/react": "^1.0.3",
     "@orpc/server": "^1.0.3",
+    "@orpc/valibot": "^1.0.3",
     "@orpc/zod": "^1.0.3",
+    "@tanstack/react-form": "^1.5.0",
     "babel-plugin-react-compiler": "^19.0.0-beta-ebf51a3-20250411",
     "next": "^15.3.1-canary.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "up-fetch": "^2.1.0",
+    "valibot": "^1.0.0",
     "zod": "^3.24.3"
   },
   "devDependencies": {
