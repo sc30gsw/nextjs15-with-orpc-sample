@@ -63,7 +63,7 @@ export function TodoForm() {
                   </em>
                 ) : error?.message.includes('validation') ? (
                   <em className="text-red-500 absolute -bottom-6 w-64">
-                    {error?.message}
+                    You must have a length of at least 1
                   </em>
                 ) : null}
               </div>
