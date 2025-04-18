@@ -7,7 +7,7 @@ import { addTodoAction } from '~/features/todo/actions/add-todo-action'
 import { TodoInputSchema } from '~/features/todo/types/schemas/todo-form-schema'
 
 export function TodoForm() {
-  const { execute, status } = useServerAction(addTodoAction, {
+  const { execute, error, status } = useServerAction(addTodoAction, {
     interceptors: [
       onError((error) => {
         if (isDefinedError(error)) {
@@ -34,9 +34,7 @@ export function TodoForm() {
 
     const todo = form.get('todo') as string
 
-    if (todo) {
-      execute({ todo, completed: false, userId: 1 })
-    }
+    execute({ todo, completed: false, userId: 1 })
   }
 
   return (
@@ -62,6 +60,10 @@ export function TodoForm() {
                     {field.state.meta.errors
                       .map((err) => err?.message)
                       .join(',')}
+                  </em>
+                ) : error?.message.includes('validation') ? (
+                  <em className="text-red-500 absolute -bottom-6 w-64">
+                    {error?.message}
                   </em>
                 ) : null}
               </div>
