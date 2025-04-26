@@ -45,8 +45,19 @@ export const findTodo = os
   .route({ method: 'GET' })
   .input(v.pick(TodoSchema, ['id']))
   .output(TodoSchema)
-  .handler(async ({ input }) => {
+  // ? https://orpc.unnoq.com/docs/openapi/error-handling
+  .errors({
+    NOT_FOUND: {
+      status: 404,
+      message: 'Todo not found',
+    },
+  })
+  .handler(async ({ input, errors }) => {
     const response = await upfetch<Todo>(`/todos/${input.id}`)
+
+    if (!response) {
+      throw errors.NOT_FOUND
+    }
 
     return response
   })
