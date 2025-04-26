@@ -5,12 +5,14 @@ import { experimental_ValibotToJsonSchemaConverter as ValibotToJsonSchemaConvert
 import { type NextRequest, NextResponse } from 'next/server'
 import { router } from '~/lib/orpc-router'
 
-// ? https://github.com/unnoq/orpc/tree/main/packages/valibot
 export async function GET(req: NextRequest) {
+  //? https://orpc.unnoq.com/docs/openapi/openapi-handler
   const openApiHandler = new OpenAPIHandler(router, {
     plugins: [
       new CORSPlugin(),
+      // ? https://orpc.unnoq.com/docs/openapi/plugins/openapi-reference
       new OpenAPIReferencePlugin({
+        // ? https://github.com/unnoq/orpc/tree/main/packages/valibot
         schemaConverters: [new ValibotToJsonSchemaConverter()],
         specGenerateOptions: {
           info: {
