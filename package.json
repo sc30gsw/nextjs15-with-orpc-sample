@@ -13,12 +13,12 @@
     "check:biome": "biome check --apply ./src"
   },
   "dependencies": {
-    "@orpc/client": "^1.0.3",
-    "@orpc/openapi": "^1.0.3",
-    "@orpc/react": "^1.0.3",
-    "@orpc/server": "^1.0.3",
-    "@orpc/valibot": "^1.0.3",
-    "@orpc/zod": "^1.0.3",
+    "@orpc/client": "^1.1.0",
+    "@orpc/openapi": "^1.1.0",
+    "@orpc/react": "^1.1.0",
+    "@orpc/server": "^1.1.0",
+    "@orpc/valibot": "^1.1.0",
+    "@orpc/zod": "^1.1.0",
     "@tanstack/react-form": "^1.5.0",
     "babel-plugin-react-compiler": "^19.0.0-beta-ebf51a3-20250411",
     "next": "^15.3.1-canary.11",
