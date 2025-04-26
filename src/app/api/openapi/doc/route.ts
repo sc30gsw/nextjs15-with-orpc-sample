@@ -19,6 +19,8 @@ export async function GET(req: NextRequest) {
             title: 'My Dummy Todo API',
             version: '1.0.0',
           },
+          // This is the prefix for the API
+          servers: [{ url: '/rpc' }],
         },
       }),
     ],
