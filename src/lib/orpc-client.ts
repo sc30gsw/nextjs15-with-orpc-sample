@@ -4,7 +4,7 @@ import type { RouterClient } from '@orpc/server'
 import type { router } from '~/lib/orpc-router'
 
 const link = new RPCLink({
-  url: 'http://localhost:3000/rpc',
+  url: `${process.env.NEXT_PUBLIC_APP_BASE_URL}/rpc`,
   // headers: { Authorization: 'Bearer token' },
 })
 
