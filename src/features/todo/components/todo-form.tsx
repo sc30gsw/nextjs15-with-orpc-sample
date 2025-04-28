@@ -7,6 +7,15 @@ import { addTodoAction } from '~/features/todo/actions/add-todo-action'
 import { TodoInputSchema } from '~/features/todo/types/schemas/todo-form-schema'
 
 export function TodoForm() {
+  const f = useForm({
+    defaultValues: {
+      todo: '',
+    },
+    validators: {
+      onChange: TodoInputSchema,
+    },
+  })
+
   const { execute, error, status } = useServerAction(addTodoAction, {
     interceptors: [
       onError((error) => {
@@ -16,17 +25,9 @@ export function TodoForm() {
       }),
       onSuccess((data) => {
         alert(`Todo added successfully: ${data.todo} for user ${data.userId}`)
+        f.reset()
       }),
     ],
-  })
-
-  const f = useForm({
-    defaultValues: {
-      todo: '',
-    },
-    validators: {
-      onChange: TodoInputSchema,
-    },
   })
 
   const action = (form: FormData) => {
@@ -55,7 +56,7 @@ export function TodoForm() {
                   onChange={(e) => field.handleChange(e.target.value)}
                   className="bg-white text-black p-1 rounded-md shadow-md w-full max-w-44"
                 />
-                {field.state.meta.errors.length > 0 ? (
+                {field.state.meta.errors.length > 0 && status !== 'success' ? (
                   <em className="text-red-500 absolute -bottom-6 w-64">
                     {field.state.meta.errors
                       .map((err) => err?.message)
