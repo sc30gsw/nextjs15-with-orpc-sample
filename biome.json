@@ -47,7 +47,9 @@
         "not-found.tsx",
         "middleware.ts",
         "default.tsx",
-        "./src/features/**/*/route.ts"
+        "./src/features/**/*/route.ts",
+        "./src/features/**/*/hono-route.ts",
+        "hono.ts"
       ],
       "linter": {
         "rules": {
